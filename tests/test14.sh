@@ -1,14 +1,16 @@
-TEST_NUMBER=1
-TEST_REQUIREMENTS="3.1.1"
+TEST_NUMBER=14
+TEST_REQUIREMENTS="3.2.2"
 TEST_FOLDER="test$TEST_NUMBER"
 FS_INPUT=""
 FS_OUTPUT=""
-RUN_COMMAND="append-to-end.sh"
-OUTPUT_STRING_EXPECTED="Wrong number of parameters"
-OUTPUT_CODE_EXPECTED=1
+RUN_COMMAND="append-to-end.sh testdir lol lol"
+OUTPUT_STRING_EXPECTED="Cannot write to subdirectory"
+OUTPUT_CODE_EXPECTED=4
 #Prepare
 mkdir $TEST_FOLDER
 cd $TEST_FOLDER
+mkdir testdir
+chmod 444 testdir
 #Execution
 OUTPUT_STRING=`../../$RUN_COMMAND`
 OUTPUT_CODE=$?
@@ -19,8 +21,8 @@ then
 else
 	VERDICT="Fail"
 fi
-#Clean
+#Clear
 cd ..
-rm -r $TEST_FOLDER
+rm -rf $TEST_FOLDER
 #Output
 echo "$TEST_NUMBER,$TEST_REQUIREMENTS,$RUN_COMMAND,$FS_INPUT,$OUTPUT_CODE,$OUTPUT_STRING,$FS_OUTPUT,$VERDICT"

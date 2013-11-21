@@ -1,3 +1,12 @@
-Номер теста,Требования,Строка запуска, Объекты ФС, Код возврата, Сообщение, Объекты ФС
-1,3.1.1,append-to-end.sh,,1,Wrong number of parameters,
-2,3.1.1,append-to-end.sh lol,,1,Wrong number of parameters,
+Номер теста,Требования,Строка запуска,Объекты ФС,Код возврата,Сообщение,Объекты ФС,Вердикт
+10,3.1.4,append-to-end.sh lol lol wrong?,,23,Wrong filename format,,Ok
+11,3.1.4,append-to-end.sh lol lol ADD&&|\,,23,Wrong filename format,,Ok
+1,3.1.1,append-to-end.sh,,1,Wrong number of parameters,,Ok
+2,3.1.1,append-to-end.sh lol,,1,Wrong number of parameters,,Ok
+3,3.1.1,append-to-end.sh lol lol,,1,Wrong number of parameters,,Ok
+4,3.1.2,append-to-end.sh aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa lol lol,,21,Wrong filename format,,Ok
+5,3.1.2,append-to-end.sh |-\|/-| lol lol,,21,Wrong filename format,,Ok
+6,3.1.2,append-to-end.sh wh$/*ere lol lol,,21,Wrong filename format,,Ok
+7,3.1.3,append-to-end.sh lol test!Problems? lol,,22,Wrong filename format,,Ok
+8,3.1.3,append-to-end.sh lol cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc lol,,22,Wrong filename format,,Ok
+9,3.1.3,append-to-end.sh lol wh&*#at lol,,22,Wrong filename format,,Ok

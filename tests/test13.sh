@@ -1,11 +1,11 @@
-TEST_NUMBER=1
-TEST_REQUIREMENTS="3.1.1"
+TEST_NUMBER=13
+TEST_REQUIREMENTS="3.2.1"
 TEST_FOLDER="test$TEST_NUMBER"
 FS_INPUT=""
 FS_OUTPUT=""
-RUN_COMMAND="append-to-end.sh"
-OUTPUT_STRING_EXPECTED="Wrong number of parameters"
-OUTPUT_CODE_EXPECTED=1
+RUN_COMMAND="append-to-end.sh testdir lol lol"
+OUTPUT_STRING_EXPECTED="Subdirectory doesn't exist"
+OUTPUT_CODE_EXPECTED=3
 #Prepare
 mkdir $TEST_FOLDER
 cd $TEST_FOLDER
@@ -19,7 +19,7 @@ then
 else
 	VERDICT="Fail"
 fi
-#Clean
+#Clear
 cd ..
 rm -r $TEST_FOLDER
 #Output

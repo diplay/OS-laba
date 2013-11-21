@@ -1,11 +1,12 @@
-TEST_NUMBER=1
-TEST_REQUIREMENTS="3.1.1"
+TEST_NUMBER=11
+TEST_REQUIREMENTS="3.1.4"
 TEST_FOLDER="test$TEST_NUMBER"
 FS_INPUT=""
 FS_OUTPUT=""
-RUN_COMMAND="append-to-end.sh"
-OUTPUT_STRING_EXPECTED="Wrong number of parameters"
-OUTPUT_CODE_EXPECTED=1
+WRONG_FILENAME="ADD&&|\\"
+RUN_COMMAND="append-to-end.sh lol lol $WRONG_FILENAME"
+OUTPUT_STRING_EXPECTED="Wrong filename format"
+OUTPUT_CODE_EXPECTED=23
 #Prepare
 mkdir $TEST_FOLDER
 cd $TEST_FOLDER
@@ -19,7 +20,7 @@ then
 else
 	VERDICT="Fail"
 fi
-#Clean
+#Clear
 cd ..
 rm -r $TEST_FOLDER
 #Output

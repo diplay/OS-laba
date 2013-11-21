@@ -1,9 +1,9 @@
-TEST_NUMBER=10
+TEST_NUMBER=12
 TEST_REQUIREMENTS="3.1.4"
 TEST_FOLDER="test$TEST_NUMBER"
 FS_INPUT=""
 FS_OUTPUT=""
-WRONG_FILENAME="wrong?"
+WRONG_FILENAME="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 RUN_COMMAND="append-to-end.sh lol lol $WRONG_FILENAME"
 OUTPUT_STRING_EXPECTED="Wrong filename format"
 OUTPUT_CODE_EXPECTED=23
