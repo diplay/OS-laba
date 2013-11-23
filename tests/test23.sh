@@ -1,7 +1,7 @@
 TEST_NUMBER=23
 TEST_REQUIREMENTS="3.2.7"
 TEST_FOLDER="test$TEST_NUMBER"
-FS_INPUT=""
+FS_INPUT="./testdir  333"
 FS_OUTPUT=""
 RUN_COMMAND="append-to-end.sh testdir lol lol"
 OUTPUT_STRING_EXPECTED="Cannot read subdirectory"

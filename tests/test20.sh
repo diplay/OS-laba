@@ -1,7 +1,7 @@
 TEST_NUMBER=20
 TEST_REQUIREMENTS="3.2.6"
 TEST_FOLDER="test$TEST_NUMBER"
-FS_INPUT=""
+FS_INPUT='./testdir/testwhat.BBB 111\n./testdir/lol 777""'
 FS_OUTPUT=""
 RUN_COMMAND="append-to-end.sh testdir testwhat lol"
 OUTPUT_STRING_EXPECTED="Cannot write to WHAT file"

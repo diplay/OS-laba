@@ -1,7 +1,7 @@
 TEST_NUMBER=19
 TEST_REQUIREMENTS="3.2.5"
 TEST_FOLDER="test$TEST_NUMBER"
-FS_INPUT=""
+FS_INPUT='"./testdir/lol.BBB 777\n./testdir/testadd 333"'
 FS_OUTPUT=""
 RUN_COMMAND="append-to-end.sh testdir lol testadd"
 OUTPUT_STRING_EXPECTED="Cannot read ADD file"

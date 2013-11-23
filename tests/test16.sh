@@ -1,7 +1,7 @@
 TEST_NUMBER=16
 TEST_REQUIREMENTS="3.2.3"
 TEST_FOLDER="test$TEST_NUMBER"
-FS_INPUT=""
+FS_INPUT='"./testdir/testwhat.BBB -\n./testdir 666"'
 FS_OUTPUT=""
 RUN_COMMAND="append-to-end.sh testdir lol lol"
 OUTPUT_STRING_EXPECTED="Cannot create file in subdirectory"

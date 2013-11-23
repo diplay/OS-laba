@@ -1,7 +1,7 @@
 TEST_NUMBER=13
 TEST_REQUIREMENTS="3.2.1"
 TEST_FOLDER="test$TEST_NUMBER"
-FS_INPUT=""
+FS_INPUT="./testdir отсутствует в директории"
 FS_OUTPUT=""
 RUN_COMMAND="append-to-end.sh testdir lol lol"
 OUTPUT_STRING_EXPECTED="Subdirectory doesn't exist"
