@@ -18,12 +18,12 @@ endif
 
 if ( ( `expr "$WHAT" : "$FORBIDDEN_REGEXP"` != 0 )  || ( `echo "$WHAT" | awk '{print length($0)}'` > 255 ) ) then
 	echo "Wrong filename format"
-	exit 21
+	exit 22
 endif
 
 if ( ( `expr "$ADD" : "$FORBIDDEN_REGEXP"` != 0 )  || ( `echo "$ADD" | awk '{print length($0)}'` > 255 ) ) then
 	echo "Wrong filename format"
-	exit 21
+	exit 23
 endif
 
 if ( ! -d $WHERE ) then

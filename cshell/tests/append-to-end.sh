@@ -1,7 +1,7 @@
 #!/bin/csh
 
 set WHERE="$1"
-set WHAT="$2"
+set WHAT="$2.BBB"
 set ADD="$3"
 
 set FORBIDDEN_REGEXP='.*[\\\/\:\*\?\"\<\>\|\#].*'
@@ -18,15 +18,13 @@ endif
 
 if ( ( `expr "$WHAT" : "$FORBIDDEN_REGEXP"` != 0 )  || ( `echo "$WHAT" | awk '{print length($0)}'` > 255 ) ) then
 	echo "Wrong filename format"
-	exit 21
+	exit 22
 endif
 
 if ( ( `expr "$ADD" : "$FORBIDDEN_REGEXP"` != 0 )  || ( `echo "$ADD" | awk '{print length($0)}'` > 255 ) ) then
 	echo "Wrong filename format"
-	exit 21
+	exit 23
 endif
-
-set WHAT = "$WHAT.BBB"
 
 if ( ! -d $WHERE ) then
 	echo "Subdirectory doesn't exist"
