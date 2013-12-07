@@ -1,24 +1,24 @@
-TEST_NUMBER=2
-TEST_REQUIREMENTS="3.1.1"
-TEST_FOLDER="test$TEST_NUMBER"
-FS_INPUT=""
-FS_OUTPUT=""
-RUN_COMMAND="append-to-end.sh lol"
-OUTPUT_STRING_EXPECTED="Wrong number of parameters"
-OUTPUT_CODE_EXPECTED=1
+#!/bin/csh
+set TEST_NUMBER=2
+set TEST_REQUIREMENTS="3.1.1"
+set TEST_FOLDER="test$TEST_NUMBER"
+set FS_INPUT=""
+set FS_OUTPUT=""
+set RUN_COMMAND="append-to-end.sh lol"
+set OUTPUT_STRING_EXPECTED="Wrong number of parameters"
+set OUTPUT_CODE_EXPECTED=1
 #Prepare
 mkdir $TEST_FOLDER
 cd $TEST_FOLDER
 #Execution
-OUTPUT_STRING=`../../$RUN_COMMAND`
-OUTPUT_CODE=$?
+set OUTPUT_STRING=`../../$RUN_COMMAND`
+set OUTPUT_CODE=$status
 #Check
-if [ "$OUTPUT_STRING" = "$OUTPUT_STRING_EXPECTED" ] && [ $OUTPUT_CODE -eq $OUTPUT_CODE_EXPECTED ]
-then
-	VERDICT="Ok"
+if ( ( "$OUTPUT_STRING" == "$OUTPUT_STRING_EXPECTED" ) && ( $OUTPUT_CODE == $OUTPUT_CODE_EXPECTED ) ) then
+set 	VERDICT="Ok"
 else
-	VERDICT="Fail"
-fi
+set 	VERDICT="Fail"
+endif
 #Clean
 cd ..
 rm -r $TEST_FOLDER

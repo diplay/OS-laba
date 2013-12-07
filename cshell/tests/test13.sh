@@ -1,24 +1,24 @@
-TEST_NUMBER=13
-TEST_REQUIREMENTS="3.2.1"
-TEST_FOLDER="test$TEST_NUMBER"
-FS_INPUT="./testdir отсутствует в директории"
-FS_OUTPUT=""
-RUN_COMMAND="append-to-end.sh testdir lol lol"
-OUTPUT_STRING_EXPECTED="Subdirectory doesn't exist"
-OUTPUT_CODE_EXPECTED=3
+#!/bin/csh
+set TEST_NUMBER=13
+set TEST_REQUIREMENTS="3.2.1"
+set TEST_FOLDER="test$TEST_NUMBER"
+set FS_INPUT="./testdir отсутствует в директории"
+set FS_OUTPUT=""
+set RUN_COMMAND="append-to-end.sh testdir lol lol"
+set OUTPUT_STRING_EXPECTED="Subdirectory doesn't exist"
+set OUTPUT_CODE_EXPECTED=3
 #Prepare
 mkdir $TEST_FOLDER
 cd $TEST_FOLDER
 #Execution
-OUTPUT_STRING=`../../$RUN_COMMAND`
-OUTPUT_CODE=$?
+set OUTPUT_STRING=`../../$RUN_COMMAND`
+set OUTPUT_CODE=$status
 #Check
-if [ "$OUTPUT_STRING" = "$OUTPUT_STRING_EXPECTED" ] && [ $OUTPUT_CODE -eq $OUTPUT_CODE_EXPECTED ]
-then
-	VERDICT="Ok"
+if ( ( "$OUTPUT_STRING" == "$OUTPUT_STRING_EXPECTED" ) && ( $OUTPUT_CODE == $OUTPUT_CODE_EXPECTED ) ) then
+set 	VERDICT="Ok"
 else
-	VERDICT="Fail"
-fi
+set 	VERDICT="Fail"
+endif
 #Clear
 cd ..
 rm -r $TEST_FOLDER

@@ -15,9 +15,9 @@ set OUTPUT_STRING=`../../$RUN_COMMAND`
 set OUTPUT_CODE=$status
 #Check
 if ( ( "$OUTPUT_STRING" == "$OUTPUT_STRING_EXPECTED" ) && ( $OUTPUT_CODE == $OUTPUT_CODE_EXPECTED ) ) then
-	set VERDICT="Ok"
+set 	VERDICT="Ok"
 else
-	set VERDICT="Fail"
+set 	VERDICT="Fail"
 endif
 #Clean
 cd ..

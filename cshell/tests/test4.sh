@@ -1,25 +1,25 @@
-TEST_NUMBER=4
-TEST_REQUIREMENTS="3.1.2"
-TEST_FOLDER="test$TEST_NUMBER"
-FS_INPUT=""
-FS_OUTPUT=""
-THREE_HUNDRED="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-RUN_COMMAND="append-to-end.sh $THREE_HUNDRED lol lol"
-OUTPUT_STRING_EXPECTED="Wrong filename format"
-OUTPUT_CODE_EXPECTED=21
+#!/bin/csh
+set TEST_NUMBER=4
+set TEST_REQUIREMENTS="3.1.2"
+set TEST_FOLDER="test$TEST_NUMBER"
+set FS_INPUT=""
+set FS_OUTPUT=""
+set THREE_HUNDRED="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+set RUN_COMMAND="append-to-end.sh $THREE_HUNDRED lol lol"
+set OUTPUT_STRING_EXPECTED="Wrong filename format"
+set OUTPUT_CODE_EXPECTED=21
 #Prepare
 mkdir $TEST_FOLDER
 cd $TEST_FOLDER
 #Execution
-OUTPUT_STRING=`../../$RUN_COMMAND`
-OUTPUT_CODE=$?
+set OUTPUT_STRING=`../../$RUN_COMMAND`
+set OUTPUT_CODE=$status
 #Check
-if [ "$OUTPUT_STRING" = "$OUTPUT_STRING_EXPECTED" ] && [ $OUTPUT_CODE -eq $OUTPUT_CODE_EXPECTED ]
-then
-	VERDICT="Ok"
+if ( ( "$OUTPUT_STRING" == "$OUTPUT_STRING_EXPECTED" ) && ( $OUTPUT_CODE == $OUTPUT_CODE_EXPECTED ) ) then
+set 	VERDICT="Ok"
 else
-	VERDICT="Fail"
-fi
+set 	VERDICT="Fail"
+endif
 #Clear
 cd ..
 rm -r $TEST_FOLDER

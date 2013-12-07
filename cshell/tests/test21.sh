@@ -1,11 +1,12 @@
-TEST_NUMBER=21
-TEST_REQUIREMENTS="3.2.6"
-TEST_FOLDER="test$TEST_NUMBER"
-FS_INPUT='"./testdir/testwhat.BBB 555\n./testdir/lol 777"'
-FS_OUTPUT=""
-RUN_COMMAND="append-to-end.sh testdir testwhat lol"
-OUTPUT_STRING_EXPECTED="Cannot write to WHAT file"
-OUTPUT_CODE_EXPECTED=8
+#!/bin/csh
+set TEST_NUMBER=21
+set TEST_REQUIREMENTS="3.2.6"
+set TEST_FOLDER="test$TEST_NUMBER"
+set FS_INPUT='"./testdir/testwhat.BBB 555\n./testdir/lol 777"'
+set FS_OUTPUT=""
+set RUN_COMMAND="append-to-end.sh testdir testwhat lol"
+set OUTPUT_STRING_EXPECTED="Cannot write to WHAT file"
+set OUTPUT_CODE_EXPECTED=8
 #Prepare
 mkdir $TEST_FOLDER
 cd $TEST_FOLDER
@@ -15,15 +16,14 @@ chmod 555 testdir/testwhat.BBB
 touch testdir/lol
 chmod 777 testdir/lol
 #Execution
-OUTPUT_STRING=`../../$RUN_COMMAND`
-OUTPUT_CODE=$?
+set OUTPUT_STRING=`../../$RUN_COMMAND`
+set OUTPUT_CODE=$status
 #Check
-if [ "$OUTPUT_STRING" = "$OUTPUT_STRING_EXPECTED" ] && [ $OUTPUT_CODE -eq $OUTPUT_CODE_EXPECTED ]
-then
-	VERDICT="Ok"
+if ( ( "$OUTPUT_STRING" == "$OUTPUT_STRING_EXPECTED" ) && ( $OUTPUT_CODE == $OUTPUT_CODE_EXPECTED ) ) then
+set 	VERDICT="Ok"
 else
-	VERDICT="Fail"
-fi
+set 	VERDICT="Fail"
+endif
 #Clear
 cd ..
 rm -rf $TEST_FOLDER

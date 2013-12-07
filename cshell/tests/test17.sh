@@ -1,11 +1,12 @@
-TEST_NUMBER=17
-TEST_REQUIREMENTS="3.2.4"
-TEST_FOLDER="test$TEST_NUMBER"
-FS_INPUT='"./testdir/lol.BBB 777\n./testdir/testadd -"'
-FS_OUTPUT=""
-RUN_COMMAND="append-to-end.sh testdir lol testadd"
-OUTPUT_STRING_EXPECTED="Cannot find ADD file"
-OUTPUT_CODE_EXPECTED=6
+#!/bin/csh
+set TEST_NUMBER=17
+set TEST_REQUIREMENTS="3.2.4"
+set TEST_FOLDER="test$TEST_NUMBER"
+set FS_INPUT='"./testdir/lol.BBB 777\n./testdir/testadd -"'
+set FS_OUTPUT=""
+set RUN_COMMAND="append-to-end.sh testdir lol testadd"
+set OUTPUT_STRING_EXPECTED="Cannot find ADD file"
+set OUTPUT_CODE_EXPECTED=6
 #Prepare
 mkdir $TEST_FOLDER
 cd $TEST_FOLDER
@@ -13,15 +14,14 @@ mkdir testdir
 touch testdir/lol.BBB
 chmod 777 testdir/lol.BBB
 #Execution
-OUTPUT_STRING=`../../$RUN_COMMAND`
-OUTPUT_CODE=$?
+set OUTPUT_STRING=`../../$RUN_COMMAND`
+set OUTPUT_CODE=$status
 #Check
-if [ "$OUTPUT_STRING" = "$OUTPUT_STRING_EXPECTED" ] && [ $OUTPUT_CODE -eq $OUTPUT_CODE_EXPECTED ]
-then
-	VERDICT="Ok"
+if ( ( "$OUTPUT_STRING" == "$OUTPUT_STRING_EXPECTED" ) && ( $OUTPUT_CODE == $OUTPUT_CODE_EXPECTED ) ) then
+set 	VERDICT="Ok"
 else
-	VERDICT="Fail"
-fi
+set 	VERDICT="Fail"
+endif
 #Clear
 cd ..
 rm -rf $TEST_FOLDER

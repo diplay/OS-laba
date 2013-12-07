@@ -1,26 +1,26 @@
-TEST_NUMBER=16
-TEST_REQUIREMENTS="3.2.3"
-TEST_FOLDER="test$TEST_NUMBER"
-FS_INPUT='"./testdir/testwhat.BBB -\n./testdir 666"'
-FS_OUTPUT=""
-RUN_COMMAND="append-to-end.sh testdir lol lol"
-OUTPUT_STRING_EXPECTED="Cannot create file in subdirectory"
-OUTPUT_CODE_EXPECTED=5
+#!/bin/csh
+set TEST_NUMBER=16
+set TEST_REQUIREMENTS="3.2.3"
+set TEST_FOLDER="test$TEST_NUMBER"
+set FS_INPUT='"./testdir/testwhat.BBB -\n./testdir 666"'
+set FS_OUTPUT=""
+set RUN_COMMAND="append-to-end.sh testdir lol lol"
+set OUTPUT_STRING_EXPECTED="Cannot create file in subdirectory"
+set OUTPUT_CODE_EXPECTED=5
 #Prepare
 mkdir $TEST_FOLDER
 cd $TEST_FOLDER
 mkdir testdir
 chmod 666 testdir
 #Execution
-OUTPUT_STRING=`../../$RUN_COMMAND`
-OUTPUT_CODE=$?
+set OUTPUT_STRING=`../../$RUN_COMMAND`
+set OUTPUT_CODE=$status
 #Check
-if [ "$OUTPUT_STRING" = "$OUTPUT_STRING_EXPECTED" ] && [ $OUTPUT_CODE -eq $OUTPUT_CODE_EXPECTED ]
-then
-	VERDICT="Ok"
+if ( ( "$OUTPUT_STRING" == "$OUTPUT_STRING_EXPECTED" ) && ( $OUTPUT_CODE == $OUTPUT_CODE_EXPECTED ) ) then
+set 	VERDICT="Ok"
 else
-	VERDICT="Fail"
-fi
+set 	VERDICT="Fail"
+endif
 #Clear
 cd ..
 rm -rf $TEST_FOLDER

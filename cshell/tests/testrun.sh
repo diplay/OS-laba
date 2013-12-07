@@ -13,6 +13,9 @@ foreach x ($TESTS)
 	if ( `expr match $x "test[0-9]*\.sh"` != 0 ) then
 		chmod +x ../$x
 		../$x
+		if ( $status != 0 ) then
+			exit
+		endif
 	endif
 end
 cd ..

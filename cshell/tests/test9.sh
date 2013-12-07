@@ -1,26 +1,26 @@
-TEST_NUMBER=9
-TEST_REQUIREMENTS="3.1.3"
-TEST_FOLDER="test$TEST_NUMBER"
-FS_INPUT=""
-FS_OUTPUT=""
-WRONG_FILENAME="wh&*#at"
-RUN_COMMAND="append-to-end.sh lol $WRONG_FILENAME lol"
-OUTPUT_STRING_EXPECTED="Wrong filename format"
-OUTPUT_CODE_EXPECTED=22
+#!/bin/csh
+set TEST_NUMBER=9
+set TEST_REQUIREMENTS="3.1.3"
+set TEST_FOLDER="test$TEST_NUMBER"
+set FS_INPUT=""
+set FS_OUTPUT=""
+set WRONG_FILENAME="wh&*#at"
+set RUN_COMMAND="append-to-end.sh lol $WRONG_FILENAME lol"
+set OUTPUT_STRING_EXPECTED="Wrong filename format"
+set OUTPUT_CODE_EXPECTED=22
 
 #Prepare
 mkdir $TEST_FOLDER
 cd $TEST_FOLDER
 #Execution
-OUTPUT_STRING=`../../$RUN_COMMAND`
-OUTPUT_CODE=$?
+set OUTPUT_STRING=`../../$RUN_COMMAND`
+set OUTPUT_CODE=$status
 #Check
-if [ "$OUTPUT_STRING" = "$OUTPUT_STRING_EXPECTED" ] && [ $OUTPUT_CODE -eq $OUTPUT_CODE_EXPECTED ]
-then
-	VERDICT="Ok"
+if ( ( "$OUTPUT_STRING" == "$OUTPUT_STRING_EXPECTED" ) && ( $OUTPUT_CODE == $OUTPUT_CODE_EXPECTED ) ) then
+set 	VERDICT="Ok"
 else
-	VERDICT="Fail"
-fi
+set 	VERDICT="Fail"
+endif
 #Clear
 cd ..
 rm -r $TEST_FOLDER
