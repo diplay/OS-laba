@@ -11,25 +11,26 @@ mkdir $TEST_FOLDER
 cd $TEST_FOLDER
 mkdir testdir
 echo "This text will be appended" > testdir/testadd
-set echo "PATH = testdir" > testfile
-endif
+echo "PATH = testdir" > testfile
+cat testdir/testadd >> testfile
 #Execution
 set OUTPUT_STRING=`../../$RUN_COMMAND`
 set OUTPUT_CODE=$status
-set FS_OUTPUT="\"./testdir/testwhat.BBB содержит строку «$(cat testdir/testwhat.BBB)»"
-set FS_OUTPUT="$FS_OUTPUT\n./testdir/testadd содержит строку «$(cat testdir/testadd)»\""
+set FS_OUTPUT='\"./testdir/testwhat.BBB содержит строку «'`cat testdir/testwhat.BBB`'»'
+set FS_OUTPUT=`echo $FS_OUTPUT`'\n./testdir/testadd содержит строку «'`cat testdir/testadd`'»\"'
 #Check
 if ( ( "$OUTPUT_STRING" == "$OUTPUT_STRING_EXPECTED" ) && ( $OUTPUT_CODE == $OUTPUT_CODE_EXPECTED ) ) then
-if ( ( "$OUTPUT_STRING" == "$OUTPUT_STRING_EXPECTED" ) && ( $OUTPUT_CODE == $OUTPUT_CODE_EXPECTED ) ) 	then
-set 		VERDICT="Ok"
+	diff testdir/testwhat.BBB testfile > /dev/null
+	if ( $status == 0 ) then
+		set VERDICT="Ok"
 	else
-set 		VERDICT="Fail(append)"
-endif
+		set VERDICT="Fail(append)"
+	endif
 else
-set 	VERDICT="Fail"
+	set VERDICT="Fail"
 endif
 #Clear
 cd ..
 rm -rf $TEST_FOLDER
 #Output
-echo -e "$TEST_NUMBER,$TEST_REQUIREMENTS,$RUN_COMMAND,$FS_INPUT,$OUTPUT_CODE,$OUTPUT_STRING,$FS_OUTPUT,$VERDICT"
+printf "$TEST_NUMBER,$TEST_REQUIREMENTS,$RUN_COMMAND,$FS_INPUT,$OUTPUT_CODE,$OUTPUT_STRING,$FS_OUTPUT,$VERDICT\n"

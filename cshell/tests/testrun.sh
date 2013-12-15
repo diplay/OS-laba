@@ -11,11 +11,17 @@ chmod +x append-to-end.sh
 cd $TIMESTAMP
 foreach x ($TESTS)
 	if ( `expr match $x "test[0-9]*\.sh"` != 0 ) then
+#echo $x selected
 		chmod +x ../$x
 		../$x
-		if ( $status != 0 ) then
-			exit
-		endif
+#echo $x done
+#if ( $status != 0 ) then
+#cd ..
+			#rm -rf $TIMESTAMP
+#exit
+#endif
+#else
+#echo $x now checked
 	endif
 end
 cd ..

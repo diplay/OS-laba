@@ -13,7 +13,7 @@ set OUTPUT_CODE_EXPECTED=22
 mkdir $TEST_FOLDER
 cd $TEST_FOLDER
 #Execution
-set OUTPUT_STRING=`../../$RUN_COMMAND`
+set OUTPUT_STRING=`../../append-to-end.sh lol wh\&\*\#at lol`
 set OUTPUT_CODE=$status
 #Check
 if ( ( "$OUTPUT_STRING" == "$OUTPUT_STRING_EXPECTED" ) && ( $OUTPUT_CODE == $OUTPUT_CODE_EXPECTED ) ) then
