@@ -5,19 +5,23 @@ printf "#!/bin/csh\n";
 while ($line = <FILE_SH>)
 {
 	$line =~ s/\$\?/\$status/;
-	if($line =~ m/if.*/)
+	if($line =~ m/\s*then$/)
+	{}
+	elsif($line =~ m/(\s*if[^\n]*)\n$/)
 	{
-		#$line =~ tr/\[/\(/;
-		#$line =~ tr/\]/\)/;
-		#$line =~ s/if/if \(/;
-		$line = 'if ( ( "$OUTPUT_STRING" == "$OUTPUT_STRING_EXPECTED" ) && ( $OUTPUT_CODE == $OUTPUT_CODE_EXPECTED ) ) ';
+		$line = "$1 ) then\n";
+		$line =~ tr/[]/()/;
+		$line =~ s/if/if \(/;
+		$line =~ s/=/==/;
+		$line =~ s/-eq/==/;
 		printf $line;
 	}
-	elsif($line =~ m/.*=.*/)
+	elsif($line =~ m/(\s*)([A-Za-z0-9_.]*=.*)/)
 	{
-		printf "set $line";
+		$line = "$1set $2\n";
+		printf "$line";
 	}
-	elsif($line =~ m/fi.*/)
+	elsif($line =~ m/^fi$/)
 	{
 		printf "endif\n";
 	}
